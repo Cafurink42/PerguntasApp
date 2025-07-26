@@ -11,6 +11,15 @@ class PerguntaApp extends StatefulWidget {
 }
 
 class _PerguntaAppState extends State<PerguntaApp> {
+  var perguntaSelecionada = 0;
+  //Criação do método responder
+  void responder() {
+    setState(() {
+      perguntaSelecionada++;
+    });
+    print(perguntaSelecionada);
+  }
+
   @override
   Widget build(BuildContext context) {
     final perguntas = [
@@ -18,9 +27,6 @@ class _PerguntaAppState extends State<PerguntaApp> {
       'Qual é o seu animal favorito?',
       'Qual é o seu esporte favorito?',
     ];
-
-    //int perguntaSelecionada = 0;
-    void start_Pergunta() async {}
 
     return MaterialApp(
       home: Scaffold(
@@ -35,10 +41,10 @@ class _PerguntaAppState extends State<PerguntaApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(perguntas[2]),
-              ElevatedButton(child: Text('Resposta 1'), onPressed: null),
-              ElevatedButton(child: Text('Resposta 2'), onPressed: null),
-              ElevatedButton(child: Text('Resposta 3'), onPressed: null),
+              Text(perguntas[perguntaSelecionada]),
+              ElevatedButton(child: Text('Resposta 1'), onPressed: responder),
+              ElevatedButton(child: Text('Resposta 2'), onPressed: responder),
+              ElevatedButton(child: Text('Resposta 3'), onPressed: responder),
             ],
           ),
         ),
