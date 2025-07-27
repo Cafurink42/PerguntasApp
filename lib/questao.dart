@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//componente Questao
 class Questao extends StatelessWidget {
   final String texto;
   Questao(this.texto);
