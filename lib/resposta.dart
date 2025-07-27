@@ -9,14 +9,18 @@ class Resposta extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(10),
       width: double.infinity,
-      child: ElevatedButton(
-        style: TextButton.styleFrom(
-          backgroundColor: Colors.blue,
-          foregroundColor: Colors.white,
+      child: SizedBox(
+        height: 40,
+        child: ElevatedButton(
+          style: TextButton.styleFrom(
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+          ),
+          child: Text(texto),
+          onPressed: quandoSelecionado,
         ),
-        child: Text(texto),
-        onPressed: quandoSelecionado,
       ),
     );
   }
