@@ -10,10 +10,10 @@ class Congrats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('')),
-      body: Center(
-        child: ElevatedButton(onPressed: onReset, child: Text('Voltar')),
+      appBar: AppBar(
+        leading: IconButton(onPressed: onReset, icon: BackButtonIcon()),
       ),
+      body: Center(child: Text('Parabéns! Você completou todas as perguntas!')),
     );
   }
 }

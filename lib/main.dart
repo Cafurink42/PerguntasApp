@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './questao.dart';
 import './resposta.dart';
+import './parabens.dart';
 
 main() {
   runApp(PerguntaApp());
@@ -48,6 +49,12 @@ class _PerguntaAppState extends State<PerguntaApp> {
     //o método setState é o responsável por atualizar o estado do widget.
   }
 
+  void _reinciarQuestionario() {
+    setState(() {
+      _perguntaSelecionada = 0;
+    });
+  }
+
   bool get temPerguntaSelecionada {
     return _perguntaSelecionada < _perguntas.length;
   }
@@ -61,8 +68,11 @@ class _PerguntaAppState extends State<PerguntaApp> {
         ? (_perguntas[_perguntaSelecionada]['respostas'] as List<String>)
         : [];
     List<Widget> widgets = respostas
-        .map((t) => Resposta(t, _responder))
-        .toList();
+        .map(
+          (r) => Resposta(r, _responder),
+        ) //Para cada item t ele cria uma novo widget do tipo Resposta passando dois argumentos t: o próprio item da lista e
+        //_responder uma função que será chamado quando algo for acionado nesse widget.
+        .toList(); //transforma o resuldo do .map() que é um Iterable em uma lista.
 
     //for (String textResp in respostas) {
     //  //cast é usado para converter o tipo dinâmico para o tipo específico
@@ -88,13 +98,14 @@ class _PerguntaAppState extends State<PerguntaApp> {
                     Questao(
                       _perguntas[_perguntaSelecionada]['texto'].toString(),
                     ),
-                    ...respostas.map((t) => Resposta(t, _responder)).toList(),
+                    ...respostas.map((r) => Resposta(r, _responder)).toList(),
                     SizedBox(height: 10),
                   ],
                 ),
               )
-            : Center(
-                child: Text('Parabéns! Você completou todas as perguntas!'),
+            : Congrats(
+                'Parabéns! Você completou todas as perguntas!',
+                _reinciarQuestionario,
               ),
       ),
     );
