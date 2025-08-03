@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import './questao.dart';
-import './resposta.dart';
-import './parabens.dart';
+import 'package:projeto_perguntas/resposta.dart';
+import './questionario.dart';
+import './resultado.dart';
 
 main() {
   runApp(PerguntaApp());
@@ -55,31 +55,17 @@ class _PerguntaAppState extends State<PerguntaApp> {
     });
   }
 
-  bool get temPerguntaSelecionada {
-    return _perguntaSelecionada < _perguntas.length;
-  }
   //bool get temPerguntaSelecionada {
   //  return _perguntaSelecionada < perguntas.length;
   //}
 
+  //verifica se ainda tem alguma pergunta para mostrar
+  bool get temPerguntaSelecionada {
+    return _perguntaSelecionada < _perguntas.length;
+  }
+
   @override
   Widget build(BuildContext context) {
-    List<String> respostas = temPerguntaSelecionada
-        ? (_perguntas[_perguntaSelecionada]['respostas'] as List<String>)
-        : [];
-    List<Widget> widgets = respostas
-        .map(
-          (r) => Resposta(r, _responder),
-        ) //Para cada item t ele cria uma novo widget do tipo Resposta passando dois argumentos t: o próprio item da lista e
-        //_responder uma função que será chamado quando algo for acionado nesse widget.
-        .toList(); //transforma o resuldo do .map() que é um Iterable em uma lista.
-
-    //for (String textResp in respostas) {
-    //  //cast é usado para converter o tipo dinâmico para o tipo específico
-    //  widgets.add(Resposta(textResp, _responder));
-    //  print(textResp);
-    //}
-
     return MaterialApp(
       home: Scaffold(
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
@@ -91,22 +77,12 @@ class _PerguntaAppState extends State<PerguntaApp> {
         ),
 
         body: temPerguntaSelecionada
-            ? Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Questao(
-                      _perguntas[_perguntaSelecionada]['texto'].toString(),
-                    ),
-                    ...respostas.map((r) => Resposta(r, _responder)).toList(),
-                    SizedBox(height: 10),
-                  ],
-                ),
+            ? Questionario(
+                perguntas: _perguntas,
+                perguntaSelecionada: _perguntaSelecionada,
+                responder: _responder,
               )
-            : Congrats(
-                'Parabéns! Você completou todas as perguntas!',
-                _reinciarQuestionario,
-              ),
+            : Congrats('', _reinciarQuestionario),
       ),
     );
   }
