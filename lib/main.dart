@@ -20,23 +20,39 @@ class _PerguntaAppState extends State<PerguntaApp> {
     //valores do tipo Map String e Objeto
     {
       'texto': 'Qual é a sua cor favorita?',
-      'respostas': ['Azul', 'Verde', 'Vermelho', 'Amarelo'],
-    },
-    {
-      'texto': 'Qual é o seu animal favorito?',
-      'respostas': ['Cachorro', 'Gato', 'Pássaro', 'Peixe'],
+      'respostas': [
+        {'texto': 'Azul', 'nota': 7},
+        {'texto': 'Verde', 'nota': 3},
+        {'texto': 'Vermelho', 'nota': 0},
+        {'texto': 'Amarelo', 'nota': 4},
+      ],
     },
     {
       'texto': 'Qual é o seu esporte favorito?',
-      'respostas': ['Futebol', 'Basquete', 'Vôlei', 'Natação'],
+      'respostas': [
+        {'texto': 'Futebol', 'nota': 6},
+        {'texto': 'Basquete', 'nota': 3},
+        {'texto': 'Vôlei', 'nota': 8},
+        {'texto': 'Natação', 'nota': 2},
+      ],
     },
     {
       'texto': 'Qual é a sua comida favorita?',
-      'respostas': ['Pizza', 'Hambúrguer', 'Sushi', 'Salada'],
+      'respostas': [
+        {'texto': 'Pizza', 'nota': 6},
+        {'texto': 'Hambúrguer', 'nota': 6},
+        {'texto': 'Sushi', 'nota': 8},
+        {'texto': 'Salada', 'nota': 2},
+      ],
     },
     {
       'texto': 'Qual é o seu hobby favorito?',
-      'respostas': ['Ler', 'Viajar', 'Cozinhar', 'Jogar video game'],
+      'respostas': [
+        {'texto': 'Ler', 'nota': 4},
+        {'texto': 'Viajar', 'nota': 6},
+        {'texto': 'Cozinhar', 'nota': 8},
+        {'texto': 'Jogar video game', 'nota': 2},
+      ],
     },
   ];
 
